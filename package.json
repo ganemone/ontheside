@@ -1,0 +1,33 @@
+{
+  "name": "react-browserify-template",
+  "version": "0.0.1",
+  "description": "Quick boilerplate for browserify and React modules.",
+  "main": "index.js",
+  "dependencies": {
+    "react": "~0.12.2"
+  },
+  "devDependencies": {
+    "statics": "~0.1.0",
+    "uglifyjs": "~2.3.6",
+    "watchify": "~0.4.1",
+    "reactify": "~0.17.1",
+    "envify": "~3.2.0"
+  },
+  "scripts": {
+    "start": "watchify client/components/**.jsx -o static/js/bundle.js",
+    "build": "browserify client/components/app.jsx -o static/js/bundle.js",
+    "build-prod": "STATIC_ROOT=./client/components NODE_ENV=production browserify . | uglifyjs -cm > bundle.min.js",
+    "server": "python server/__init__.py",
+    "test-client": "npm test",
+    "test-server": "",
+    "test": "npm run test-client && npm run test-server"
+  },
+  "author": "Pete Hunt",
+  "license": "Apache 2",
+  "browserify": {
+    "transform": [
+      "reactify",
+      "envify"
+    ]
+  }
+}
