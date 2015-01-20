@@ -1,4 +1,3 @@
-from os import path
 from flask import Flask, render_template
 
 app = Flask(__name__, template_folder="../", static_folder="../static")
@@ -11,7 +10,6 @@ def index():
 
 @app.route('/statics/<path:path>')
 def handle_test(path):
-    app.logger.error('WHOOOOOHOOOO')
     return render_template('index.html')
 
 
@@ -19,7 +17,7 @@ def handle_test(path):
 # TODO: Do this with apache or nginx
 @app.route('/static/<path:file_path>.<extension>')
 def static_proxy(file_path, extension):
-    file_path = file_path.rstrip('/') + "." + extension 
+    file_path = file_path.rstrip('/') + "." + extension
     app.logger.info('File Path: %s' % file_path)
     return app.send_static_file(file_path)
 
