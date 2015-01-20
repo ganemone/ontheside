@@ -1,22 +1,22 @@
 {
   "name": "onetheside",
   "version": "0.0.1",
-  "description": "Website for sharing and collaboriting on side projects", 
+  "description": "Website for sharing and collaboriting on side projects",
   "main": "index.js",
   "dependencies": {
     "react": "~0.12.2",
     "keymirror": "~0.1.1",
-    "react-router": "~0.11.6"
+    "react-router": "~0.11.6",
+    "cookies-js": "~1.1.0",
+    "browser-request": "~0.3.3"
   },
   "devDependencies": {
-    "statics": "~0.1.0",
-    "uglifyjs": "~2.3.6",
-    "watchify": "~0.4.1",
+    "watchify": "~2.2.1",
     "reactify": "~0.17.1",
-    "envify": "~3.2.0"
+    "browserify": "~8.1.1"
   },
   "scripts": {
-    "start": "watchify client/components/**.jsx -o static/js/bundle.js",
+    "start": "watchify client/components/app.jsx -o static/js/bundle.js -v",
     "build": "browserify client/components/app.jsx -o static/js/bundle.js",
     "server": "python server/__init__.py",
     "test-client": "npm test",
