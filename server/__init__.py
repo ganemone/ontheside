@@ -1,6 +1,16 @@
 from flask import Flask, render_template
 
+from flask.ext.sqlalchemy import SQLAlchemy
+
+# Define the WSGI Application object
 app = Flask(__name__, template_folder="../", static_folder="../static")
+
+# Configurations
+app.config.from_object('config')
+
+# Define the database object which is imported
+# by modules and controllers
+db = SQLAlchemy(app)
 
 
 @app.route("/")
