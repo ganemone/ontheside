@@ -1,7 +1,7 @@
 {
-  "name": "react-browserify-template",
+  "name": "onetheside",
   "version": "0.0.1",
-  "description": "Quick boilerplate for browserify and React modules.",
+  "description": "Website for sharing and collaboriting on side projects", 
   "main": "index.js",
   "dependencies": {
     "react": "~0.12.2",
@@ -18,7 +18,6 @@
   "scripts": {
     "start": "watchify client/components/**.jsx -o static/js/bundle.js",
     "build": "browserify client/components/app.jsx -o static/js/bundle.js",
-    "build-prod": "STATIC_ROOT=./client/components NODE_ENV=production browserify . | uglifyjs -cm > bundle.min.js",
     "server": "python server/__init__.py",
     "test-client": "npm test",
     "test-server": "",
@@ -28,8 +27,7 @@
   "license": "Apache 2",
   "browserify": {
     "transform": [
-      "reactify",
-      "envify"
+      "reactify"
     ]
   }
 }
