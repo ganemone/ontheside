@@ -1,9 +1,7 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
+from app_factory import db
 
 
-class Language(Base):
+class Language(db.Model):
     __tablename__ = 'languages'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(128))
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(128))

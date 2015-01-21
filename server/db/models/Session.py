@@ -1,11 +1,8 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import ForeignKey
-Base = declarative_base()
+from app_factory import db
 
 
-class Session(Base):
+class Session(db.Model):
     __tablename__ = 'session'
-    id = Column(Integer, primary_key=True)
-    session_id = Column(String(128))
-    user_id = Column(Integer, ForeignKey('users.id'))
+    id = db.Column(db.Integer, primary_key=True)
+    session_id = db.Column(db.String(128))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))

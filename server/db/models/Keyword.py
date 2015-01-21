@@ -1,9 +1,7 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-Base = declarative_base()
+from app_factory import db
 
 
-class Keyword(Base):
+class Keyword(db.Model):
     __tablename__ = 'keywords'
-    id = Column(Integer, primary_key=True)
-    keyword = Column(String(128))
+    id = db.Column(db.Integer, primary_key=True)
+    keyword = db.Column(db.String(128))

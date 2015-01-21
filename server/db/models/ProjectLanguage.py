@@ -1,11 +1,8 @@
-from sqlalchemy import Column, Integer
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import ForeignKey
-Base = declarative_base()
+from app_factory import db
 
 
-class ProjectLanguage(Base):
+class ProjectLanguage(db.Model):
     __tablename__ = 'project_languages'
-    id = Column(Integer, primary_key=True)
-    project_id = Column(Integer, ForeignKey('projects.id'))
-    language_id = Column(Integer, ForeignKey('languages.id'))
+    id = db.Column(db.Integer, primary_key=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
+    language_id = db.Column(db.Integer, db.ForeignKey('languages.id'))

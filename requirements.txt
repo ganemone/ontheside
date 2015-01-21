@@ -9,3 +9,4 @@ Werkzeug==0.9.6
 itsdangerous==0.24
 virtualenv==12.0.5
 Flask-Restless==0.15.1
+Flask-SQLAlchemy==2.0

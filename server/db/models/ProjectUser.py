@@ -1,12 +1,9 @@
-from sqlalchemy import Column, Integer, Enum
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import ForeignKey
-Base = declarative_base()
+from app_factory import db
 
 
-class ProjectUser(Base):
+class ProjectUser(db.Model):
     __tablename__ = 'project_users'
-    id = Column(Integer, primary_key=True)
-    user_id = Column(Integer, ForeignKey('users.id'))
-    project_id = Column(Integer, ForeignKey('projects.id'))
-    role = Column(Enum('owner', 'contributer', 'designer'))
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
+    role = db.Column(db.Enum('owner', 'contributer', 'designer'))

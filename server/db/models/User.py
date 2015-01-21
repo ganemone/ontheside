@@ -1,20 +1,17 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import relationship, backref
-
-Base = declarative_base()
+from app_factory import db
+from db.models.Session import Session
 
 
-class User(Base):
+class User(db.Model):
     __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
-    name = Column('name', String(50))
-    username = Column('username', String(50))
-    password = Column('password', String(50))
-    email = Column('email', String(128))
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column('name', db.String(50))
+    username = db.Column('username', db.String(50))
+    password = db.Column('password', db.String(50))
+    email = db.Column('email', db.String(128))
 
-    session = relationship(
-        'Session', uselist=False, backref=backref('user', order_by=id)
+    session = db.relationship(
+        Session, uselist=False, backref=db.backref('user', order_by=id)
     )
 
     def __repr__(self):

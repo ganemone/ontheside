@@ -1,16 +1,27 @@
-from flask import Flask, render_template
+from flask import render_template
+from flask.ext.restless import APIManager
+from db.models.User import User
+from db.models.Keyword import Keyword
+from db.models.Language import Language
+from db.models.Project import Project
+from app_factory import db, create_app
 
-from flask.ext.sqlalchemy import SQLAlchemy
+app = create_app()
 
-# Define the WSGI Application object
-app = Flask(__name__, template_folder="../", static_folder="../static")
 
-# Configurations
-app.config.from_object('config')
+# Create the Flask-Restless API Manager
+manager = APIManager(app, flask_sqlalchemy_db=db)
 
-# Define the database object which is imported
-# by modules and controllers
-db = SQLAlchemy(app)
+project_columns = ['id', 'description',
+                   'source', 'type']
+
+# Create API endpoints, available at /api/<tablename> by default.
+manager.create_api(User, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Keyword, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Language, methods=['GET', 'POST', 'DELETE'])
+manager.create_api(Project,
+                   methods=['GET', 'POST', 'DELETE'],
+                   include_columns=project_columns)
 
 
 @app.route("/")
