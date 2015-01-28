@@ -21,3 +21,9 @@ class User(db.Model):
             name=self.name, username=self.username,
             password=self.password, email=self.email
         )
+
+    def __init__(self, name, username, password, email):
+        self.name = name
+        self.username = username
+        self.password = password
+        self.email = email
