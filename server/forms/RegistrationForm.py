@@ -11,4 +11,7 @@ class RegistrationForm(Form):
          validators.EqualTo('confirm')]
     )
     confirm = PasswordField()
-    email = StringField(validators.length(min=6, max=35))
+    email = StringField([
+        validators.Required(),
+        validators.length(min=6, max=35)]
+    )
