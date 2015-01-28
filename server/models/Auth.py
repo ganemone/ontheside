@@ -1,3 +1,0 @@
-
-def login():
-	if request.
