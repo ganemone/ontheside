@@ -2,10 +2,7 @@ import wtforms_json
 
 from flask import render_template
 from flask.ext.restless import APIManager
-from db.models.User import User
-from db.models.Keyword import Keyword
-from db.models.Language import Language
-from db.models.Project import Project
+from models import User, Keyword, Language, Project
 from app_factory import db, create_app
 
 # Initialize JSON Support for WTForms

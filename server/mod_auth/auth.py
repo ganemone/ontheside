@@ -1,5 +1,5 @@
 from app_factory import db
-from db.models.User import User
+from models import User
 from forms.RegistrationForm import RegistrationForm
 from forms.LoginForm import LoginForm
 
