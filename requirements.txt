@@ -12,3 +12,4 @@ Flask-Restless==0.15.1
 Flask-SQLAlchemy==2.0
 WTForms-JSON==0.2.8
 pytest==2.6.4
+doubles==1.0.4
