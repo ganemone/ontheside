@@ -1,6 +1,4 @@
-import pytest
-
-from forms.RegistrationForm import RegistrationForm
+from forms import RegistrationForm
 
 
 class TestRegistrationForm:

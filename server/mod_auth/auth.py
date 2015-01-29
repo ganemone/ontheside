@@ -1,7 +1,6 @@
 from app_factory import db
 from models import User
-from forms.RegistrationForm import RegistrationForm
-from forms.LoginForm import LoginForm
+from forms import RegistrationForm, LoginForm
 
 
 def load_user(user_id):
