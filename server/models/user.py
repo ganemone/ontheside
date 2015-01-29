@@ -1,5 +1,5 @@
 from app_factory import db
-from models import Session
+from models.session import Session
 
 
 class User(db.Model):
