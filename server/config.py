@@ -26,4 +26,6 @@ CSRF_SESSION_KEY = "secret"
 # Secret key for signing cookies
 SECRET_KEY = "secret"
 
-FIXTURES_DIRS = ['tests/fixtures']
+FIXTURES_DIRS = [
+    '/home/ganemone/Documents/dev/ontheside/server/tests/fixtures/'
+]
