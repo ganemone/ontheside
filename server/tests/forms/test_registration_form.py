@@ -1,7 +1,8 @@
+from tests.helpers import SimpleTestCase
 from forms import RegistrationForm
 
 
-class TestRegistrationForm:
+class TestRegistrationForm(SimpleTestCase):
 
     def test_valid(self):
         json = {
