@@ -1,15 +1,14 @@
 import wtforms_json
-import logging
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-db = SQLAlchemy()
 
-logging.basicConfig()
-# logging.getLogger('sqlalchemy.engine').setLevel(logging.INFO)
+db = SQLAlchemy()
 
 
 def create_app():
+
     wtforms_json.init()
+
     # Define the WSGI Application object
     app = Flask(
         __name__,
@@ -21,7 +20,7 @@ def create_app():
     app.config.from_object('config')
 
     db.init_app(app)
-    with app.app_context():
+    with app.test_request_context():
         db.create_all()
 
     return app
