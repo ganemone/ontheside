@@ -14,6 +14,12 @@ class User(db.Model):
         Session, uselist=False, backref=db.backref('user', order_by=id)
     )
 
+    def __init__(self, name, username, password, email):
+        self.name = name
+        self.username = username
+        self.password = password
+        self.email = email
+
     def __repr__(self):
         return ''
         '<User(name={name}, username={username}, '
@@ -22,8 +28,15 @@ class User(db.Model):
             password=self.password, email=self.email
         )
 
-    def __init__(self, name, username, password, email):
-        self.name = name
-        self.username = username
-        self.password = password
-        self.email = email
+    def is_authenticated(self):
+        return (hasattr(self.session.session_id) and
+                self.session.session_id is not None)
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id
