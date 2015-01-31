@@ -1,0 +1,24 @@
+[
+  {
+    "table": "keywords",
+    "records":
+    [
+      {
+        "id": 1,
+        "keyword": "Web Development"
+      },
+      {
+        "id": 2,
+        "keyword": "Big Data"
+      },
+      {
+        "id": 3,
+        "keyword": "Frontend"
+      },
+      {
+        "id": 4,
+        "keyword": "Backend"
+      }
+    ]
+  }
+]

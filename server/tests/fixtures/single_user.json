@@ -1,0 +1,15 @@
+[
+  {
+    "table": "users",
+    "records":
+    [
+      {
+        "id": 1,
+        "name": "Giancarlo Anemone",
+        "username": "ganemone",
+        "password": "password",
+        "email": "ganemone@gmail.com"
+      }
+    ]
+  }
+]
