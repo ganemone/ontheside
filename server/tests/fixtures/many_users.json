@@ -1,0 +1,36 @@
+[
+  {
+    "table": "users",
+    "records":
+    [
+      {
+        "id": 1,
+        "name": "Giancarlo Anemone",
+        "username": "ganemone",
+        "password": "password",
+        "email": "ganemone@gmail.com"
+      },
+      {
+        "id": 2,
+        "name": "Jenna Fiore",
+        "username": "jfiore",
+        "password": "jpassword",
+        "email": "jemail@gmail.com"
+      },
+      {
+        "id": 3,
+        "name": "John Doe",
+        "username": "jdoe",
+        "password": "jdoepassword",
+        "email": "jdoe@gmail.com"
+      },
+      {
+        "id": 4,
+        "name": "Jane Doe",
+        "username": "jane",
+        "password": "janedoe",
+        "email": "janedoe@gmail.com"
+      }
+    ]
+  }
+]
