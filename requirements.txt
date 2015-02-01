@@ -14,3 +14,4 @@ WTForms-JSON==0.2.8
 pytest==2.6.4
 doubles==1.0.4
 Flask-Fixtures==0.3.1
+Flask-Login==0.2.11
