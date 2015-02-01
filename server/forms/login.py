@@ -1,11 +1,24 @@
 from wtforms import Form, StringField, PasswordField, validators
+from forms import db_match
+from models import User
 
 
 class LoginForm(Form):
     # Login name can be either username or email
-    login_name = StringField(
-        [validators.Required(), validators.Length(min=4, max=35)]
+    user_exists_validator = db_match(
+        model=User,
+        message='Invalid username/password combination',
+        query_fields=['username', 'password'],
+    )
+    username = StringField(
+        'username',
+        [
+            validators.Required(),
+            validators.Length(min=4, max=35),
+            user_exists_validator
+        ]
     )
     password = PasswordField(
+        'password',
         [validators.Required(), validators.Length(min=6, max=35)]
     )
