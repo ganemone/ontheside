@@ -1,3 +1,4 @@
+import json
 import wtforms_json
 from app_factory import create_app, create_api, db
 from api import api_config
@@ -39,3 +40,9 @@ class FlaskTestCase(SimpleTestCase):
             # Decorate the original test client request method.
             old_method = getattr(self.app, methodname)
             setattr(self.app, methodname, set_content_type(old_method))
+
+    def api_request(self, method, *args, **kwargs):
+        func = getattr(self.test_client, method)
+        response = func(*args, **kwargs)
+        json_data = json.loads(response.get_data().decode('utf-8'))
+        return (response, json_data)
