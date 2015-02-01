@@ -7,18 +7,26 @@ class TestUserAPI(FlaskTestCase):
     @fixtures('base.json')
     def test_get_empty_users(self):
         """Test GET /api/users endpoint with no data"""
-        response = self.test_client.get('/api/users')
+        response, data = self.api_request('get', '/api/users')
+        assert data['num_results'] is 0
         assert response.status_code is 200
 
+    @fixtures('single_user.json')
     def test_get_one_user(self):
         """Test GET /api/users endpoint with a single user"""
+        response, data = self.api_request('get', '/api/users')
+        assert data['num_results'] is 1
+        assert response.status_code is 200
 
+    @fixtures('many_users.json')
     def test_get_multiple_users(self):
         """Test GET /api/users endpoint with multple users"""
 
+    @fixtures('many_users.json')
     def test_get_no_user_by_id(self):
         """Test GET /api/users/(int:id) for missing user"""
 
+    @fixtures('many_users.json')
     def test_user_by_id(self):
         """Test GET /api/users(int:id) for existing user"""
 
