@@ -21,14 +21,22 @@ class TestUserAPI(FlaskTestCase):
     @fixtures('many_users.json')
     def test_get_multiple_users(self):
         """Test GET /api/users endpoint with multple users"""
+        response, data = self.api_request('get', '/api/users')
+        assert data['num_results'] > 0
+        assert response.status_code is 200
 
     @fixtures('many_users.json')
     def test_get_no_user_by_id(self):
         """Test GET /api/users/(int:id) for missing user"""
+        response, data = self.api_request('get', '/api/users/1000')
+        assert response.status_code == 404
 
     @fixtures('many_users.json')
     def test_user_by_id(self):
         """Test GET /api/users(int:id) for existing user"""
+        response, data = self.api_request('get', '/api/users/1')
+        assert data['username'] == 'ganemone'
+        assert response.status_code is 200
 
     @fixtures('base.json')
     def test_post_user(self):
