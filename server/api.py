@@ -1,6 +1,6 @@
 from flask.ext.restless import ProcessingException
-from forms import RegistrationForm
-from models import User, Keyword, Language, Project
+from server.forms import RegistrationForm
+from server.models import User, Keyword, Language, Project
 
 
 def validate_with_form(form_class):

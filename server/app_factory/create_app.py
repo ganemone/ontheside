@@ -24,7 +24,7 @@ def create_app():
     )
 
     # Configurations
-    app.config.from_object('config')
+    app.config.from_object('server.config')
 
     # Initialize database with application
     db.init_app(app)

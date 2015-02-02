@@ -1,5 +1,5 @@
-from models import User
-from forms import LoginForm
+from server.models import User
+from server.forms import LoginForm
 
 
 def load_user(user_id):

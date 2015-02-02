@@ -1,5 +1,5 @@
 import json
-from tests.helpers import FlaskTestCase, fixtures
+from server.tests.helpers import FlaskTestCase, fixtures
 
 
 class TestUserAPI(FlaskTestCase):

@@ -1,4 +1,4 @@
-from app_factory import db
+from server.app_factory import db
 
 
 class Keyword(db.Model):

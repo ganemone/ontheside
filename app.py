@@ -1,6 +1,6 @@
 from flask import render_template
-from app_factory import create_app, create_api, db
-from api import api_config
+from server.app_factory import create_app, create_api, db
+from server.api import api_config
 
 # Create the flask app
 app = create_app()

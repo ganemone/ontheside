@@ -1,5 +1,5 @@
-from mod_auth.auth import load_user  # , register, login
-from tests.helpers import FlaskTestCase, fixtures
+from server.mod_auth.auth import load_user  # , register, login
+from server.tests.helpers import FlaskTestCase, fixtures
 
 
 class TestAuth(FlaskTestCase):

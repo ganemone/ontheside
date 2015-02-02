@@ -1,5 +1,5 @@
-from tests.helpers import FlaskTestCase, fixtures
-from forms import LoginForm
+from server.tests.helpers import FlaskTestCase, fixtures
+from server.forms import LoginForm
 
 invalid_combo_message = 'Invalid username/password combination'
 

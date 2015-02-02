@@ -1,6 +1,6 @@
 from wtforms import Form, StringField, PasswordField, validators
-from forms import db_match
-from models import User
+from server.forms import db_match
+from server.models import User
 
 
 class LoginForm(Form):

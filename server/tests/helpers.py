@@ -1,7 +1,7 @@
 import json
 import wtforms_json
-from app_factory import create_app, create_api, db
-from api import api_config
+from server.app_factory import create_app, create_api, db
+from server.api import api_config
 from flask.ext.fixtures import Fixtures
 
 fixtures = Fixtures(create_app(), db, True)

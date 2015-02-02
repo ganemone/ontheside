@@ -1,5 +1,5 @@
-from tests.helpers import SimpleTestCase
-from forms import RegistrationForm
+from server.tests.helpers import SimpleTestCase
+from server.forms import RegistrationForm
 
 
 class TestRegistrationForm(SimpleTestCase):
