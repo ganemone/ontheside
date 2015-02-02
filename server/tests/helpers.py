@@ -1,10 +1,14 @@
 import json
 import wtforms_json
+from flask.ext.fixtures import Fixtures
 from server.app_factory import create_app, create_api, db
 from server.api import api_config
-from flask.ext.fixtures import Fixtures
 
 fixtures = Fixtures(create_app(), db, True)
+
+
+class Object(object):
+    pass
 
 
 class SimpleTestCase:
@@ -46,3 +50,13 @@ class FlaskTestCase(SimpleTestCase):
         response = func(*args, **kwargs)
         json_data = json.loads(response.get_data().decode('utf-8'))
         return (response, json_data)
+
+    def login(self):
+        auth_header = b'Basic ganemone:password'
+        test = self.test_client.get('/')
+        assert test.status_code == 200
+        response = self.test_client.get(
+            '/', headers={'Authorization': auth_header}
+        )
+        assert response.status_code == 200
+        return response
