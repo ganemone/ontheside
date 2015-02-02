@@ -1,0 +1,12 @@
+[
+  {
+    "table": "keywords",
+    "records":
+    [
+      {
+        "id": 1,
+        "keyword": "Web Development"
+      }
+    ]
+  }
+]
