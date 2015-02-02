@@ -38,6 +38,21 @@ class TestKeywordAPI(FlaskTestCase):
         assert data['keyword'] == 'Web Development'
         assert response.status_code == 200
 
+    @fixtures('single_user.json')
+    def test_post_keyword(self):
+        """Tests POST to /api/keywords for an authorized user"""
+        self.login()
+
+        data = {
+            'keyword': 'some_value'
+        }
+        response = self.app.post(
+            '/api/keywords',
+            data=json.dumps(data)
+        )
+
+        assert response.status_code == 201
+
     @fixtures('base.json')
     def test_post_keyword_unauthorized(self):
         """Tests POST to /api/keywords for an unauthorized user"""
@@ -50,17 +65,3 @@ class TestKeywordAPI(FlaskTestCase):
         )
 
         assert response.status_code == 401
-
-    @fixtures('single_user.json')
-    def test_post_keyword(self):
-        """Tests POST to /api/keywords for an authorized user"""
-        self.login()
-        data = {
-            'keyword': 'some_value'
-        }
-        response = self.app.post(
-            '/api/keywords',
-            data=json.dumps(data)
-        )
-
-        assert response.status_code == 201

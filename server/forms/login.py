@@ -13,12 +13,12 @@ class LoginForm(Form):
     username = StringField(
         'username',
         [
-            validators.Required(),
+            validators.data_required(),
             validators.Length(min=4, max=35),
             user_exists_validator
         ]
     )
     password = PasswordField(
         'password',
-        [validators.Required(), validators.Length(min=6, max=35)]
+        [validators.data_required(), validators.Length(min=6, max=35)]
     )

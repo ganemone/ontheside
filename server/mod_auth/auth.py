@@ -1,7 +1,7 @@
 from flask import Response
 from flask.ext.login import login_user
-from server.app_factory import login_manager
 from server.models import User
+from server.login_manager import login_manager
 
 
 @login_manager.user_loader
@@ -10,14 +10,21 @@ def load_user(user_id):
     return User.query.filter_by(id=user_id).first()
 
 
+def handle_basic_auth(request):
+    auth = request.authorization
+    if not auth:
+        return None
+    return User.query.filter_by(
+        username=auth.username,
+        password=auth.password
+    ).first()
+
+
 def login(request):
     """Handle a login request from a user."""
-    user = User.query.filter_by(
-        username=request.authorization.username,
-        password=request.authorization.password
-    ).first()
-    if user is not None:
-        login_user(user)
+    user = handle_basic_auth(request)
+    if user:
+        login_user(user, remember=True)
         return 'OK'
     return Response(
         'Could not verify your access level for that URL.\n'

@@ -1,14 +1,8 @@
 import wtforms_json
 from flask import Flask
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
 from server.routes.routes import define_routes
-
-# Create db object so it can be shared throughout the application
-db = SQLAlchemy()
-
-# Create the login manager to be shared throughout the application
-login_manager = LoginManager()
+from server.login_manager import login_manager
+from server.models import db
 
 
 def create_app():

@@ -8,7 +8,7 @@ def define_routes(app):
     def index():
         return render_template('index.html')
 
-    @app.route('/test')
+    @app.route('/user/login')
     def route_login():
         return login(request)
 

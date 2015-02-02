@@ -1,8 +1,11 @@
 import json
 import wtforms_json
+import base64
 from flask.ext.fixtures import Fixtures
-from server.app_factory import create_app, create_api, db
+from server.app_factory import create_app, create_api
+from server.models import db
 from server.api import api_config
+
 
 fixtures = Fixtures(create_app(), db, True)
 
@@ -12,20 +15,17 @@ class Object(object):
 
 
 class SimpleTestCase:
-
     def setup(self):
         wtforms_json.init()
 
 
 class FlaskTestCase(SimpleTestCase):
-
     def setup(self):
         super(FlaskTestCase, self).setup()
 
         flaskapp = create_app()
         flaskapp.config['TESTING'] = True
 
-        self.test_client = flaskapp.test_client()
         self.api_manager = create_api(flaskapp, db, api_config)
         self.app = flaskapp.test_client()
         self.flaskapp = flaskapp
@@ -40,23 +40,26 @@ class FlaskTestCase(SimpleTestCase):
                     if 'content_type' not in kw:
                         kw['content_type'] = 'application/json'
                     return func(*args, **kw)
+
                 return new_func
+
             # Decorate the original test client request method.
             old_method = getattr(self.app, methodname)
             setattr(self.app, methodname, set_content_type(old_method))
 
     def api_request(self, method, *args, **kwargs):
-        func = getattr(self.test_client, method)
+        func = getattr(self.app, method)
         response = func(*args, **kwargs)
         json_data = json.loads(response.get_data().decode('utf-8'))
-        return (response, json_data)
+        return response, json_data
 
     def login(self):
-        auth_header = b'Basic ganemone:password'
-        test = self.test_client.get('/')
-        assert test.status_code == 200
-        response = self.test_client.get(
-            '/', headers={'Authorization': auth_header}
+        # we need to base 64 encode it and then decode it
+        # to acsii as python 3 stores it as a byte string
+        auth_header = base64.b64encode(b"ganemone:password").decode("ascii")
+        headers = {'Authorization': 'Basic %s' % auth_header}
+        response = self.app.get(
+            '/user/login', headers=headers
         )
         assert response.status_code == 200
         return response
