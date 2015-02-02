@@ -2,6 +2,7 @@ import wtforms_json
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.login import LoginManager
+from server.routes.routes import define_routes
 
 # Create db object so it can be shared throughout the application
 db = SQLAlchemy()
@@ -33,5 +34,8 @@ def create_app():
 
     # Initialize login manager with application
     login_manager.init_app(app)
+
+    # Setup the routes
+    define_routes(app)
 
     return app
