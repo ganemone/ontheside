@@ -27,6 +27,7 @@ def login_required_preprocessor(*args, **kwargs):
             description='Not Authorized',
             code=401
         )
+    return True
 
 api_config = [
     {
