@@ -1,3 +1,3 @@
 import pytest
 
-pytest.main('server/tests/')
+pytest.main('server/tests/ -x')
