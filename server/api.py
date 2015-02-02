@@ -1,4 +1,5 @@
 from flask.ext.restless import ProcessingException
+from flask.ext.login import current_user
 from server.forms import RegistrationForm
 from server.models import User, Keyword, Language, Project
 
@@ -19,6 +20,14 @@ def remove_props(props):
 
     return preprocessor
 
+
+def login_required_preprocessor(*args, **kwargs):
+    if not current_user.is_authenticated():
+        raise ProcessingException(
+            description='Not Authorized',
+            code=401
+        )
+
 api_config = [
     {
         'model': User,
@@ -27,12 +36,15 @@ api_config = [
             'POST': [
                 validate_with_form(RegistrationForm),
                 remove_props(['confirm'])
-            ]
+            ],
         }
     },
     {
         'model': Keyword,
-        'methods': ['GET', 'POST', 'DELETE']
+        'methods': ['GET', 'POST', 'DELETE'],
+        'preprocessors': {
+            'POST': [login_required_preprocessor]
+        }
     },
     {
         'model': Language,
