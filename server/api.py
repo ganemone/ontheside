@@ -1,7 +1,22 @@
-from flask.ext.restless import ProcessingException
-from flask.ext.login import current_user
+from flask_restless import ProcessingException
+from flask_login import current_user
 from server.forms import RegistrationForm
 from server.models import User, Keyword, Language, Project
+
+
+def project_owned_by_current_user(instance_id):
+    """Preprocessor for api project DELETE endpoint which
+    ensures project can only be deleted by a user with role 'owner'
+
+    :param instance_id: id of instance to be deleted
+    :raises ProcessingException: if current_user is not an owner of the project
+    :return:None
+    :rtype: None
+    """
+    project = Project.query.filter_by(id=instance_id).first()
+    owners = project.get_owners()
+    if current_user not in owners:
+        raise ProcessingException('Only project owners can delete projects')
 
 
 def validate_with_form(form_class):
@@ -29,7 +44,6 @@ def login_required_preprocessor(*args, **kwargs):
         )
     return True
 
-
 api_config = [
     {
         'model': User,
@@ -45,21 +59,28 @@ api_config = [
         'model': Keyword,
         'methods': ['GET', 'POST', 'DELETE'],
         'preprocessors': {
-            'POST': [login_required_preprocessor]
+            'POST': [login_required_preprocessor],
+            'DELETE': [login_required_preprocessor]
         }
     },
     {
         'model': Language,
         'methods': ['GET', 'POST', 'DELETE'],
         'preprocessors': {
-            'POST': [login_required_preprocessor]
+            'POST': [login_required_preprocessor],
+
         }
     },
     {
         'model': Project,
         'methods': ['GET', 'POST', 'DELETE'],
         'preprocessors': {
-            'POST': [login_required_preprocessor]
+            'POST': [login_required_preprocessor],
+            'DELETE': [
+                login_required_preprocessor,
+                project_owned_by_current_user
+            ]
+
         },
         'include_columns': ['id', 'description',
                             'source', 'type']
