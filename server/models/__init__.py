@@ -1,5 +1,5 @@
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import UserMixin
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin
 
 db = SQLAlchemy()
 
@@ -42,6 +42,7 @@ project_languages = db.Table(
 class Project(db.Model):
     __tablename__ = 'projects'
     id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
     description = db.Column(db.Text)
     source = db.Column(db.String(256))
     type = db.Column(db.Enum('bitbucket', 'git'))
@@ -49,6 +50,14 @@ class Project(db.Model):
     users = db.relationship('User', secondary=project_users)
     keywords = db.relationship('Keyword', secondary=project_keywords)
     languages = db.relationship('Language', secondary=project_languages)
+
+    def get_owners(self):
+        """
+
+        :return: a list of usernames of project owners
+        :rtype list
+        """
+        return filter(lambda x: x.role == 'owner', self.users)
 
 
 class Session(db.Model):
