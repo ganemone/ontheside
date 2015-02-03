@@ -29,6 +29,7 @@ def login_required_preprocessor(*args, **kwargs):
         )
     return True
 
+
 api_config = [
     {
         'model': User,
@@ -49,11 +50,17 @@ api_config = [
     },
     {
         'model': Language,
-        'methods': ['GET', 'POST', 'DELETE']
+        'methods': ['GET', 'POST', 'DELETE'],
+        'preprocessors': {
+            'POST': [login_required_preprocessor]
+        }
     },
     {
         'model': Project,
         'methods': ['GET', 'POST', 'DELETE'],
+        'preprocessors': {
+            'POST': [login_required_preprocessor]
+        },
         'include_columns': ['id', 'description',
                             'source', 'type']
     }
