@@ -1,0 +1,24 @@
+[
+  {
+    "table": "languages",
+    "records":
+    [
+      {
+        "id": 1,
+        "language": "Python"
+      },
+      {
+        "id": 2,
+        "language": "Node.js"
+      },
+      {
+        "id": 3,
+        "language": "Java"
+      },
+      {
+        "id": 4,
+        "language": "C"
+      }
+    ]
+  }
+]

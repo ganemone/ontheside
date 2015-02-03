@@ -1,0 +1,12 @@
+[
+  {
+    "table": "languages",
+    "records":
+    [
+      {
+        "id": 1,
+        "keyword": "Python"
+      }
+    ]
+  }
+]
