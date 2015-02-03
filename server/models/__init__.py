@@ -13,7 +13,7 @@ class Keyword(db.Model):
 class Language(db.Model):
     __tablename__ = 'languages'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(128))
+    language = db.Column(db.String(128))
 
 
 # Project Users Table
