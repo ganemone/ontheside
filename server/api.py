@@ -82,7 +82,7 @@ api_config = [
             ]
 
         },
-        'include_columns': ['id', 'description',
+        'include_columns': ['id', 'name', 'description',
                             'source', 'type']
     }
 ]
