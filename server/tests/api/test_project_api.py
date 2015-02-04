@@ -18,25 +18,26 @@ class TestProjectAPI(FlaskTestCase):
         assert data['num_results'] is 1
         assert response.status_code is 200
 
-    # @fixtures('many_projects.json')
-    # def test_get_multiple_projects(self):
-    #     """Test GET /api/projects endpoint with multple projects"""
-    #     response, data = self.api_request('get', '/api/projects')
-    #     assert data['num_results'] > 0
-    #     assert response.status_code is 200
-    #
-    # @fixtures('many_projects.json')
-    # def test_get_no_project_by_id(self):
-    #     """Test GET /api/projects/(int:id) for missing project"""
-    #     response, data = self.api_request('get', '/api/projects/1000')
-    #     assert response.status_code == 404
-    #
-    # @fixtures('many_projects.json')
-    # def test_project_by_id(self):
-    #     """Test GET /api/projects(int:id) for existing project"""
-    #     response, data = self.api_request('get', '/api/projects/1')
-    #     assert data['projectname'] == 'ganemone'
-    #     assert response.status_code is 200
+    @fixtures('many_projects.json')
+    def test_get_multiple_projects(self):
+        """Test GET /api/projects endpoint with multple projects"""
+        response, data = self.api_request('get', '/api/projects')
+        assert data['num_results'] > 0
+        assert response.status_code is 200
+
+    @fixtures('many_projects.json')
+    def test_get_no_project_by_id(self):
+        """Test GET /api/projects/(int:id) for missing project"""
+        response, data = self.api_request('get', '/api/projects/1000')
+        assert response.status_code == 404
+
+    @fixtures('many_projects.json')
+    def test_project_by_id(self):
+        """Test GET /api/projects(int:id) for existing project"""
+        response, data = self.api_request('get', '/api/projects/1')
+        print(data)
+        assert data['name'] == 'Some Project Name'
+        assert response.status_code is 200
     #
     # @fixtures('base.json')
     # def test_post_project(self):
