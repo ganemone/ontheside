@@ -1,9 +1,9 @@
 from flask import render_template, request
+
 from server.mod_auth.auth import login
 
 
 def define_routes(app):
-
     @app.route('/')
     def index():
         return render_template('index.html')
