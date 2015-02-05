@@ -14,6 +14,7 @@ def db_match(model, message, query_fields, match_fields=None):
     :type match_fields: list
     :return: function
     """
+
     def _db_match(form, field):
         """Validator function called by the wtforms api
 
@@ -31,7 +32,7 @@ def db_match(model, message, query_fields, match_fields=None):
         if match_fields is not None:
             for key in match_fields:
                 if (not hasattr(result, key) or
-                        result.key != match_fields[key]):
+                            result.key != match_fields[key]):
                     raise ValidationError(message)
 
     return _db_match

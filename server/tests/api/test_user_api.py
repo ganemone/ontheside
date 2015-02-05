@@ -1,9 +1,9 @@
 import json
+
 from server.tests.helpers import FlaskTestCase, fixtures
 
 
 class TestUserAPI(FlaskTestCase):
-
     @fixtures('base.json')
     def test_get_empty_users(self):
         """Test GET /api/users endpoint with no data"""

@@ -1,9 +1,9 @@
 import json
+
 from server.tests.helpers import FlaskTestCase, fixtures
 
 
 class TestKeywordAPI(FlaskTestCase):
-
     @fixtures('base.json')
     def test_get_empty_keywords(self):
         """Test GET /api/keywords endpoint with no data"""

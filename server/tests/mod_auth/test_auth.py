@@ -3,7 +3,6 @@ from server.tests.helpers import FlaskTestCase, fixtures
 
 
 class TestAuth(FlaskTestCase):
-
     @fixtures('single_user.json')
     def test_load_existing_user(self):
         """Test loading a single valid user"""

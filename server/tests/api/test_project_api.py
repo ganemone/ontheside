@@ -1,4 +1,5 @@
 import json
+
 from server.tests.helpers import FlaskTestCase, fixtures
 
 

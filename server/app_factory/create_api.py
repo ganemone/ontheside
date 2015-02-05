@@ -1,4 +1,4 @@
-from flask.ext.restless import APIManager
+from flask_restless import APIManager
 
 
 def create_api(app, db, endpoints):

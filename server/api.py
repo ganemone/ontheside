@@ -1,5 +1,6 @@
 from flask_restless import ProcessingException
 from flask_login import current_user
+
 from server.forms import RegistrationForm
 from server.models import User, Keyword, Language, Project
 
@@ -43,6 +44,7 @@ def login_required_preprocessor(*args, **kwargs):
             code=401
         )
     return True
+
 
 api_config = [
     {

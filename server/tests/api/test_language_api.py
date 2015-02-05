@@ -1,9 +1,9 @@
 import json
+
 from server.tests.helpers import FlaskTestCase, fixtures
 
 
 class TestLanguageAPI(FlaskTestCase):
-
     @fixtures('base.json')
     def test_get_empty_languages(self):
         """Test GET /api/languages endpoint with no data"""

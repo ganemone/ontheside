@@ -1,5 +1,6 @@
 import wtforms_json
 from flask import Flask
+
 from server.routes.routes import define_routes
 from server.login_manager import login_manager
 from server.models import db

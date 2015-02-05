@@ -1,6 +1,8 @@
 import json
-import wtforms_json
 import base64
+
+import wtforms_json
+
 from flask.ext.fixtures import Fixtures
 from server.app_factory import create_app, create_api
 from server.models import db

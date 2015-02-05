@@ -5,7 +5,6 @@ invalid_combo_message = 'Invalid username/password combination'
 
 
 class TestLoginForm(FlaskTestCase):
-
     @fixtures('many_users.json')
     def test_nonexisting_user(self):
         """Test login form validation with nonexisting user"""

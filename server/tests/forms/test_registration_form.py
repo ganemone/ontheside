@@ -3,7 +3,6 @@ from server.forms import RegistrationForm
 
 
 class TestRegistrationForm(SimpleTestCase):
-
     def test_valid(self):
         json = {
             'username': 'someusername',

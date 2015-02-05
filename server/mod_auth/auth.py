@@ -1,4 +1,5 @@
 from flask import Response
+
 from flask.ext.login import login_user
 from server.models import User
 from server.login_manager import login_manager
