@@ -32,26 +32,25 @@ class Project(db.Model):
     keywords = db.relationship('Keyword', secondary=project_keywords)
     languages = db.relationship('Language', secondary=project_languages)
 
-    def _get_users_with_role(self, user_role):
+    def _get_users_with_role(self, role: str) -> list:
         """Returns a list of users corresponding to the
-        project with a role
+            project with a role
+    
+            :param role: role of user | owner || contributer || designer
+            :return: list of users corresponding to the given role
+            """
+        return list(filter(lambda x: x.role == role, self.users.col))
 
-        :param user_role: role of user | owner || contributer || designer
-        :type: user_role: str
-        :return: list of users corresponding to the given role
-        :rtype: list
-        """
-        return list(filter(lambda x: x.role == user_role, self.users.col))
-
-    def get_owners(self):
+    @property
+    def owners(self) -> list:
         """Returns a list of project owners
 
         :return: a list of usernames of project owners
-        :rtype: list
         """
         return self._get_users_with_role('owner')
 
-    def get_contributers(self):
+    @property
+    def contributers(self) -> list:
         """Returns a list of project contributers
 
         :return: a list of project contributers
@@ -59,7 +58,8 @@ class Project(db.Model):
         """
         return self._get_users_with_role('contributer')
 
-    def get_designers(self):
+    @property
+    def designers(self) -> list:
         """Returns a list of project designers
 
         :return: a list of project designers
@@ -76,7 +76,7 @@ class ProjectUsers(db.Model):
 
     project = db.relationship(Project, backref=db.backref('project_user'))
 
-    user = db.relationship(User)
+    user = db.relationship(User, backref=db.backref('project_user'))
 
     def __init__(self, project=None, user=None, role=None):
         self.project = project
