@@ -41,7 +41,6 @@ class TestProjectAPI(FlaskTestCase):
         assert 'languages' in data
         assert response.status_code == 200
 
-
     @fixtures('base.json')
     def test_post_project_unauthorized(self):
         data = {
@@ -56,7 +55,6 @@ class TestProjectAPI(FlaskTestCase):
         )
 
         assert response.status_code == 401
-
 
     @fixtures('many_projects.json')
     def test_post_project(self):
@@ -86,3 +84,4 @@ class TestProjectAPI(FlaskTestCase):
         )
 
         assert response.status_code == 201
+
