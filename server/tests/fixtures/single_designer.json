@@ -1,0 +1,120 @@
+[
+  {
+    "table": "projects",
+    "records": [
+      {
+        "id": 1,
+        "description": "Some Project Description",
+        "name": "Some Project Name",
+        "source": "Some Project Source",
+        "type": "git"
+      }
+    ]
+  },
+  {
+    "table": "users",
+    "records":
+    [
+      {
+        "id": 1,
+        "name": "Giancarlo Anemone",
+        "username": "ganemone",
+        "password": "password",
+        "email": "ganemone@gmail.com"
+      },
+      {
+        "id": 2,
+        "name": "Jenna Fiore",
+        "username": "jfiore",
+        "password": "jpassword",
+        "email": "jemail@gmail.com"
+      },
+      {
+        "id": 3,
+        "name": "John Doe",
+        "username": "jdoe",
+        "password": "jdoepassword",
+        "email": "jdoe@gmail.com"
+      },
+      {
+        "id": 4,
+        "name": "Jane Doe",
+        "username": "jane",
+        "password": "janedoe",
+        "email": "janedoe@gmail.com"
+      }
+    ]
+  },
+  {
+    "table": "project_users",
+    "records":
+    [
+      {
+        "id": 1,
+        "project_id": 1,
+        "user_id": 1,
+        "role": "owner"
+      },
+      {
+        "id": 2,
+        "project_id": 1,
+        "user_id": 2,
+        "role": "contributer"
+      },
+      {
+        "id": 3,
+        "project_id": 1,
+        "user_id": 3,
+        "role": "contributer"
+      },
+      {
+        "id": 4,
+        "project_id": 1,
+        "user_id": 4,
+        "role": "designer"
+      }
+    ]
+  },
+  {
+    "table": "keywords",
+    "records":
+    [
+      {
+        "id": 1,
+        "keyword": "Web Development"
+      }
+    ]
+  },
+  {
+    "table": "languages",
+    "records":
+    [
+      {
+        "id": 1,
+        "keyword": "Python"
+      }
+    ]
+  },
+  {
+    "table": "project_languages",
+    "records":
+    [
+      {
+        "id": 1,
+        "project_id": 1,
+        "language_id": 1
+      }
+    ]
+  },
+  {
+    "table": "project_keywords",
+    "records":
+    [
+      {
+        "id": 1,
+        "project_id": 1,
+        "keyword_id": 1
+      }
+    ]
+  }
+]
