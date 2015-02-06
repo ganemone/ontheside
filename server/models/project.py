@@ -1,11 +1,8 @@
-from server.models.db import db
+from sqlalchemy.ext.associationproxy import association_proxy
 
-# Project Users Table
-u_id = db.Column('id', db.Integer, primary_key=True)
-user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'))
-project_id = db.Column('project_id', db.Integer, db.ForeignKey('projects.id'))
-role = db.Column('role', db.Enum('owner', 'contributer', 'designer'))
-project_users = db.Table('project_users', u_id, user_id, project_id, role)
+from server.models.db import db
+from server.models.user import User
+
 
 # Project Keywords Table
 p_id = db.Column('id', db.Integer, primary_key=True)
@@ -31,14 +28,57 @@ class Project(db.Model):
     source = db.Column(db.String(256))
     type = db.Column(db.Enum('bitbucket', 'git'))
 
-    users = db.relationship('User', secondary=project_users)
+    users = association_proxy('project_user', 'user')
     keywords = db.relationship('Keyword', secondary=project_keywords)
     languages = db.relationship('Language', secondary=project_languages)
 
-    def get_owners(self):
+    def _get_users_with_role(self, user_role):
+        """Returns a list of users corresponding to the
+        project with a role
+
+        :param user_role: role of user | owner || contributer || designer
+        :type: user_role: str
+        :return: list of users corresponding to the given role
+        :rtype: list
         """
+        return list(filter(lambda x: x.role == user_role, self.users.col))
+
+    def get_owners(self):
+        """Returns a list of project owners
 
         :return: a list of usernames of project owners
-        :rtype list
+        :rtype: list
         """
-        return filter(lambda x: x.role == 'owner', self.users)
+        return self._get_users_with_role('owner')
+
+    def get_contributers(self):
+        """Returns a list of project contributers
+
+        :return: a list of project contributers
+        :rtype: list
+        """
+        return self._get_users_with_role('contributer')
+
+    def get_designers(self):
+        """Returns a list of project designers
+
+        :return: a list of project designers
+        :rtype: list
+        """
+        return self._get_users_with_role('designer')
+
+
+class ProjectUsers(db.Model):
+    __tablename__ = 'project_users'
+    user_id = db.Column('user_id', db.Integer, db.ForeignKey('users.id'), primary_key=True)
+    project_id = db.Column('project_id', db.Integer, db.ForeignKey('projects.id'), primary_key=True)
+    role = db.Column('role', db.Enum('owner', 'contributer', 'designer'))
+
+    project = db.relationship(Project, backref=db.backref('project_user'))
+
+    user = db.relationship(User)
+
+    def __init__(self, project=None, user=None, role=None):
+        self.project = project
+        self.user = user
+        self.role = role
