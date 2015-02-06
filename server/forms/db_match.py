@@ -31,8 +31,7 @@ def db_match(model, message, query_fields, match_fields=None):
             raise ValidationError(message)
         if match_fields is not None:
             for key in match_fields:
-                if (not hasattr(result, key) or
-                            result.key != match_fields[key]):
+                if not hasattr(result, key) or result.key != match_fields[key]:
                     raise ValidationError(message)
 
     return _db_match
