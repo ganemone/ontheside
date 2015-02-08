@@ -16,8 +16,8 @@
     "browserify": "~8.1.1"
   },
   "scripts": {
-    "start": "watchify client/components/app.jsx -o static/js/bundle.js -v",
-    "build": "browserify client/components/app.jsx -o static/js/bundle.js",
+    "start": "watchify client/index.jsx -o static/js/bundle.js -v",
+    "build": "browserify client/index.jsx -o static/js/bundle.js",
     "server": "python server/__init__.py",
     "test-client": "npm test",
     "test-server": "",

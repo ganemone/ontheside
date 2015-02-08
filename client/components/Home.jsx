@@ -34,22 +34,18 @@ var items = [
 
 var lead = 'Collaborate and share your side projects with developers, designers, and other professionals from around the world.';
 
-var app = React.createClass({
+var Home = React.createClass({
 
-  displayName: 'app',
+  displayName: 'Home',
   render: function () {
     return (
-      <div className="site-wrapper">
-        <div className="site-wrapper-inner">
-          <div className="cover-container">
-            <MastHeadNavBar items={items} brand='ontheside' />
-            <Cover heading='ontheside' lead={lead} buttonText='Learn more' action='#' />
-            <Footer text='Footer text goes here :)' />
-          </div>
-        </div>
+      <div className="cover-container">
+        <MastHeadNavBar items={items} brand='ontheside' />
+        <Cover heading='ontheside' lead={lead} buttonText='Learn more' action='#' />
+        <Footer text='Footer text goes here :)' />
       </div>
     );
   }
 });
 
-module.exports = app;
+module.exports = Home;
