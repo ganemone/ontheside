@@ -2,6 +2,8 @@ from wtforms import Form, StringField, PasswordField, validators
 
 
 class RegistrationForm(Form):
+    """Form for handling registration form validation
+    """
     username = StringField(
         'username',
         [validators.required(),

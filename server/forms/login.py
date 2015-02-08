@@ -5,7 +5,8 @@ from server.models import User
 
 
 class LoginForm(Form):
-    # Login name can be either username or email
+    """Class for handling login form validation
+    """
     user_exists_validator = db_match(
         model=User,
         message='Invalid username/password combination',
