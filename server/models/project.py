@@ -54,7 +54,6 @@ class Project(db.Model):
         """Returns a list of project contributers
 
         :return: a list of project contributers
-        :rtype: list
         """
         return self._get_users_with_role('contributer')
 
@@ -63,7 +62,6 @@ class Project(db.Model):
         """Returns a list of project designers
 
         :return: a list of project designers
-        :rtype: list
         """
         return self._get_users_with_role('designer')
 
