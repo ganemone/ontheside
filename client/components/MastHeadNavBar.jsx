@@ -11,7 +11,7 @@ var navbar = React.createClass({
           <nav>
             <ul className="nav masthead-nav">
             {this.props.items.map(function(item) {
-              return (<MastHeadNavBarItem data={item.data} key={item.id} isInitiallyActive={item.isActive} />);
+              return (<MastHeadNavBarItem data={item.data} key={item.id} isActive={item.isActive} />);
             })}
             </ul>
           </nav>

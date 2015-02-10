@@ -12,9 +12,12 @@ var NavBarItem = React.createClass({
   getDefaultProps: function() {
     return {
       data: {
-        action: '#'
+        action: '/'
       }
     };
+  },
+  getAction: function() {
+    return '/#' + this.props.data.action
   },
   render: function () {
     if (this.props.type === ComponentTypes.DEFAULT) {
@@ -31,7 +34,7 @@ var NavBarItem = React.createClass({
     });
     return (
       <li key={this.props.key} className={classes}>
-        <a href={this.props.data.action}>{this.props.data.text}</a>
+        <a href={this.getAction()}>{this.props.data.text}</a>
       </li>
     );
   },
@@ -46,7 +49,7 @@ var NavBarItem = React.createClass({
           {this.props.data.map(function(data) {
             return (
               <li key={data.key}>
-                <a href={data.action}>{data.text}</a>
+                <a href={'/#' + data.action}>{data.text}</a>
               </li>
             );
           })}
