@@ -30,5 +30,6 @@ CSRF_SESSION_KEY = "secret"
 SECRET_KEY = "secret"
 
 FIXTURES_DIRS = [
-    '/home/ganemone/Documents/dev/ontheside/server/tests/fixtures/'
+    '/home/ganemone/Documents/dev/ontheside/server/tests/fixtures/',
+    '/Users/giancarloanemone/Documents/dev/web/ontheside/server/tests/fixtures/'
 ]
