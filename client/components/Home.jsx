@@ -1,51 +1,22 @@
 /** @jsx React.DOM */
-var React = require('react');
-var MastHeadNavBar = require('./MastHeadNavBar.jsx');
-var Cover = require('./Cover.jsx');
-var Footer = require('./Footer.jsx');
-var Router = require('react-router');
-var Route = Router.Route;
-var RouteHandler = Router.RouteHandler;
-var Link = Router.Link;
+var React = require('react')
+var MastHeadNavBar = require('./MastHeadNavBar.jsx')
+var Cover = require('./Cover.jsx')
+var Footer = require('./Footer.jsx')
 
-var items = [
-{
-  isActive: true,
-  data: {
-    action: '#',
-    text: 'Home'
-  },
-  id: 0
-},
-{
-  data: {
-    action: '#',
-    text: 'Login / Sign Up'
-  },
-  id: 1
-},
-{
-  data: {
-    action: '#',
-    text: 'Browse Projects'
-  },
-  id: 3
-}];
-
-var lead = 'Collaborate and share your side projects with developers, designers, and other professionals from around the world.';
+var lead = 'Collaborate and share your side projects with developers, designers, and other professionals from around the world.'
 
 var Home = React.createClass({
 
   displayName: 'Home',
   render: function () {
     return (
-      <div className="cover-container">
-        <MastHeadNavBar items={items} brand='ontheside' />
+      <div>
         <Cover heading='ontheside' lead={lead} buttonText='Learn more' action='#' />
         <Footer text='Footer text goes here :)' />
       </div>
-    );
+    )
   }
-});
+})
 
-module.exports = Home;
+module.exports = Home
