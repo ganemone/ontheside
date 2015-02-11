@@ -10,15 +10,6 @@ keyword_id = db.Column('keyword_id', db.Integer, db.ForeignKey('keywords.id'))
 project_id = db.Column('project_id', db.Integer, db.ForeignKey('projects.id'))
 project_keywords = db.Table('project_keywords', p_id, keyword_id, project_id)
 
-# Project Languages
-pr_id = db.Column('id', db.Integer, primary_key=True)
-language_id = db.Column(
-    'language_id', db.Integer, db.ForeignKey('languages.id'))
-project_id = db.Column('project_id', db.Integer, db.ForeignKey('projects.id'))
-project_languages = db.Table(
-    'project_languages', pr_id, language_id, project_id
-)
-
 
 class Project(db.Model):
     __tablename__ = 'projects'
@@ -29,8 +20,8 @@ class Project(db.Model):
     type = db.Column(db.Enum('bitbucket', 'git'))
 
     users = association_proxy('project_user', 'user')
+    languages = db.relationship('Language', secondary='project_languages')
     keywords = db.relationship('Keyword', secondary=project_keywords)
-    languages = db.relationship('Language', secondary=project_languages)
 
     def _get_users_with_role(self, role: str) -> list:
         """Returns a list of users corresponding to the
