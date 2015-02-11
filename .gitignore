@@ -1,6 +1,6 @@
 .idea
 __pycache__
-static/js/bundle.js
+static
 node_modules
 browser-bundle.js
 browser-bundle.min.js
