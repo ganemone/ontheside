@@ -12,10 +12,6 @@ def define_routes(app):
     def route_login():
         return login(request)
 
-    @app.route('/statics/<path:path>')
-    def handle_test(path):
-        return render_template('index.html')
-
     # Serve Static Assets
     # TODO: Do this with apache or nginx
     @app.route('/static/<path:file_path>.<extension>')
