@@ -12,6 +12,7 @@ class User(db.Model, UserMixin):
     email = db.Column('email', db.String(128))
 
     projects = association_proxy('project_user', 'project')
+    favorites = association_proxy('project_favorite', 'project')
 
     def __init__(self, name, username, password, email):
         self.name = name

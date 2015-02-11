@@ -6,5 +6,6 @@ from server.models.user import User
 from server.models.project_user import ProjectUser
 from server.models.project_language import ProjectLanguage
 from server.models.project_keyword import ProjectKeyword
+from server.models.project_favorite import ProjectFavorite
 
 

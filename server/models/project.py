@@ -13,6 +13,7 @@ class Project(db.Model):
     type = db.Column(db.Enum('bitbucket', 'git'))
 
     users = association_proxy('project_user', 'user')
+    favorite_users = association_proxy('project_favorite', 'user')
     languages = db.relationship('Language', secondary='project_languages')
     keywords = db.relationship('Keyword', secondary='project_keywords')
 
