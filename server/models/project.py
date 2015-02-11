@@ -4,13 +4,6 @@ from server.models.db import db
 from server.models.user import User
 
 
-# Project Keywords Table
-p_id = db.Column('id', db.Integer, primary_key=True)
-keyword_id = db.Column('keyword_id', db.Integer, db.ForeignKey('keywords.id'))
-project_id = db.Column('project_id', db.Integer, db.ForeignKey('projects.id'))
-project_keywords = db.Table('project_keywords', p_id, keyword_id, project_id)
-
-
 class Project(db.Model):
     __tablename__ = 'projects'
     id = db.Column(db.Integer, primary_key=True)
@@ -21,7 +14,7 @@ class Project(db.Model):
 
     users = association_proxy('project_user', 'user')
     languages = db.relationship('Language', secondary='project_languages')
-    keywords = db.relationship('Keyword', secondary=project_keywords)
+    keywords = db.relationship('Keyword', secondary='project_keywords')
 
     def _get_users_with_role(self, role: str) -> list:
         """Returns a list of users corresponding to the
