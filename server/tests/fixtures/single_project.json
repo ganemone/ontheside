@@ -77,5 +77,15 @@
         "keyword_id": 1
       }
     ]
+  },
+  {
+    "table": "project_favorites",
+    "records":
+    [
+      {
+        "user_id": 1,
+        "project_id": 1
+      }
+    ]
   }
 ]
