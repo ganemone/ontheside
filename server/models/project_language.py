@@ -10,7 +10,6 @@ class ProjectLanguage(db.Model):
 
     language = db.relationship('Language', backref=db.backref('project_language'))
 
-    def __init__(self, project=None, language=None, role=None):
+    def __init__(self, project=None, language=None):
         self.project = project
         self.language = language
-        self.role = role
