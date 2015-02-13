@@ -1,18 +1,19 @@
-var React = require('react')
+var React = require('react');
 
 var Project = React.createClass({
   render: function() {
+    var project = this.props.project;
     return (
       <div>
-        <div className="projectName">{this.props.name}</div>
-        <div className="projectDescription">{this.props.description}</div>
+        <div className="projectName">{project.name}</div>
+        <div className="projectDescription">{project.description}</div>
         <div className="projectFavoriteContainer">
           <button class="btn btn-default">Favorite</button>
-          <span>{this.props.numFavorites}</span>
+          <span>{project.numFavorites}</span>
         </div>
       </div>
-    )
+    );
   }
-})
+});
 
-module.exports = Project
+module.exports = Project;

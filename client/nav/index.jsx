@@ -27,6 +27,5 @@ module.exports = function getNavForPath(path) {
     item.isActive = (item.data.action === path)
     return item
   })
-  console.log('Items: ', items)
   return items
 }
