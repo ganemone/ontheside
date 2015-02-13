@@ -5,7 +5,7 @@ function getResponseCB(cb) {
     if (error) {
       return cb(error);
     }
-    return cb(null, response.response.objects);
+    return cb(null, JSON.parse(response.response));
   }
 }
 

@@ -5,25 +5,30 @@ var api = require('../models/api.js');
 
 var ProjectList = React.createClass({
   mixins: [ReactAsync.Mixin],
+  getInitialState: function() {
+    return {
+      num_results: 0,
+      page: 1,
+      total_pages: 1,
+      objects: []
+    }
+  },
   getInitialStateAsync: function(cb) {
     api.getAll('projects', cb);
   },
   render: function() {
-    console.log(this.state);
     return (
       <div>
-        Stuff
+        {
+          this.state.objects.map(function(project) {
+            return (
+              <Project project={project} />
+            );
+          })
+        }
       </div>
     );
   }
 });
-
-// {
-        //   this.state.projects.map(function(project) {
-        //     return (
-        //       <Project project={project} />
-        //     );
-        //   })
-        // }
 
 module.exports = ProjectList;
