@@ -21,6 +21,7 @@ def project_owned_by_current_user(instance_id):
 
 
 def validate_with_form(form_class):
+    """Preprocessor which validates a request based on a form"""
     def preprocessor(data=None):
         form = form_class.from_json(data)
         if not form.validate():
