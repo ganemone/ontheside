@@ -92,6 +92,7 @@ api_config = [
                             'type',
                             'users',
                             'keywords',
-                            'languages']
+                            'languages',
+                            'favorite_users']
     }
 ]

@@ -10,7 +10,8 @@
     "cookies-js": "~1.1.0",
     "browser-request": "~0.3.3",
     "immutable": "~3.6.2",
-    "react-form": "0.0.2"
+    "react-form": "0.0.2",
+    "react-async": "~2.0.1"
   },
   "devDependencies": {
     "watchify": "~2.2.1",
@@ -18,9 +19,9 @@
     "browserify": "~8.1.1"
   },
   "scripts": {
-    "start": "watchify client/index.jsx -o static/js/bundle.js -v",
+    "watch": "watchify client/index.jsx -o static/js/bundle.js -v",
     "build": "browserify client/index.jsx -o static/js/bundle.js",
-    "server": "python server/__init__.py",
+    "start": "python app.py",
     "test-client": "npm test",
     "test-server": "",
     "test": "npm run test-client && npm run test-server"
